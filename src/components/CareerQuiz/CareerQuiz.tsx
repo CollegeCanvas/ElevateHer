@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Brain, ChevronRight, ArrowLeft } from 'lucide-react';
 import { quizData } from './quizData';
+import { CareerDetails } from '../CareerDetails/CareerDetails';
 
 interface CareerPath {
   title: string;
@@ -14,6 +15,7 @@ export function CareerQuiz() {
   const [path, setPath] = useState<string[]>([]);
   const [currentCareers, setCurrentCareers] = useState<CareerPath[]>([]);
   const [showResults, setShowResults] = useState(false);
+  const [selectedCareer, setSelectedCareer] = useState<CareerPath | null>(null);
 
   const getCurrentStep = () => {
     let current = quizData[0];
@@ -35,7 +37,6 @@ export function CareerQuiz() {
     let current = quizData[0];
     let currentOptions = current.options;
     
-    // Find the selected option and its careers
     for (let i = 0; i < newPath.length; i++) {
       const selectedOption = currentOptions.find(opt => opt.label === newPath[i]);
       if (selectedOption?.subOptions) {
@@ -53,13 +54,17 @@ export function CareerQuiz() {
   };
 
   const handleBack = () => {
+    if (selectedCareer) {
+      setSelectedCareer(null);
+      return;
+    }
+    
     if (showResults) {
       setShowResults(false);
     }
     const newPath = path.slice(0, -1);
     setPath(newPath);
     
-    // Update careers if needed
     if (newPath.length > 0) {
       let current = quizData[0];
       let currentOptions = current.options;
@@ -81,9 +86,18 @@ export function CareerQuiz() {
     setPath([]);
     setCurrentCareers([]);
     setShowResults(false);
+    setSelectedCareer(null);
+  };
+
+  const handleCareerSelect = (career: CareerPath) => {
+    setSelectedCareer(career);
   };
 
   const currentStep = getCurrentStep();
+
+  if (selectedCareer) {
+    return <CareerDetails career={selectedCareer} onBack={handleBack} />;
+  }
 
   return (
     <div className="bg-white p-8 rounded-lg shadow-md max-w-3xl mx-auto">
@@ -156,9 +170,10 @@ export function CareerQuiz() {
           </div>
 
           {currentCareers.map((career, index) => (
-            <div
+            <button
               key={index}
-              className="p-6 bg-white rounded-lg border border-gray-200 hover:border-blue-200 hover:shadow-md transition"
+              onClick={() => handleCareerSelect(career)}
+              className="w-full text-left p-6 bg-white rounded-lg border border-gray-200 hover:border-blue-200 hover:shadow-md transition"
             >
               <h4 className="text-xl font-semibold text-gray-900 mb-2">
                 {career.title}
@@ -191,7 +206,7 @@ export function CareerQuiz() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </button>
           ))}
 
           <div className="text-center mt-8">
