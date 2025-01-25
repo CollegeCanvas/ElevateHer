@@ -36,7 +36,7 @@ function App() {
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <GraduationCap className="h-8 w-8 text-blue-600" />
-              <span className="ml-2 text-xl font-bold text-gray-900">CareerGuide</span>
+              <span className="ml-2 text-xl font-bold text-gray-900">ElevateHer</span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
               <a href="#resources" className="text-gray-700 hover:text-blue-600">Resources</a>
@@ -143,7 +143,7 @@ function App() {
             <div>
               <div className="flex items-center">
                 <GraduationCap className="h-8 w-8 text-blue-400" />
-                <span className="ml-2 text-xl font-bold">CareerGuide</span>
+                <span className="ml-2 text-xl font-bold">ElevateHer</span>
               </div>
               <p className="mt-4 text-gray-400">
                 Empowering students to make informed career decisions.
@@ -180,7 +180,7 @@ function App() {
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} CareerGuide. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} ElevateHer. All rights reserved.</p>
           </div>
         </div>
       </footer>
