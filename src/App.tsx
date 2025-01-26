@@ -11,6 +11,7 @@ import {
   Twitter
 } from 'lucide-react';
 import { CareerQuiz } from './components/CareerQuiz/CareerQuiz';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 function App() {
   const mentors = [
@@ -36,7 +37,7 @@ function App() {
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <GraduationCap className="h-8 w-8 text-blue-600" />
-              <span className="ml-2 text-xl font-bold text-gray-900">ElevateHer</span>
+              <span className="ml-2 text-xl font-bold text-gray-900"><a href=''>ElevateHer</a></span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
               <a href="#resources" className="text-gray-700 hover:text-blue-600">Resources</a>
@@ -56,7 +57,7 @@ function App() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                Your Journey to Success Starts Here
+                Her Journey to Success Starts Here
               </h1>
               <p className="mt-4 text-xl text-gray-600">
                 Personalized career guidance and mentorship for students at every stage of their academic journey.
@@ -72,11 +73,11 @@ function App() {
               </div>
             </div>
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600"
-                alt="Students collaborating"
-                className="rounded-lg shadow-xl"
-              />
+            <DotLottieReact
+              src="https://lottie.host/76507193-8311-4966-87ef-ab73f1b7a38c/glZnMG7SeW.lottie"
+              loop
+              autoplay
+            /> 
             </div>
           </div>
         </div>
